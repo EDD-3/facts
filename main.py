@@ -4,9 +4,13 @@ from langchain.text_splitter import CharacterTextSplitter
 
 load_dotenv()
 
+
+# Splitting the text in the file into chunks for embeddings
 text_splitter = CharacterTextSplitter(separator="\n", chunk_size=200, chunk_overlap=0)
 
 loader = TextLoader("facts.txt")
 docs = loader.load_and_split(text_splitter=text_splitter)
 
-print(docs)
+for doc in docs:
+    print(doc)
+    print("\n")
